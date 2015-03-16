@@ -35,7 +35,7 @@
               </a>
               Rosin
           </h3>
-          <p>Fiddler插件，移动端页面开发、调试利器。</p>
+          <p>Rosin是一个Fiddler插件，协助开发者进行移动端页面开发调试，是移动端web开发、调试利器。</p>
 
           <h3>
               <a id="版本" class="anchor" href="#版本" aria-hidden="true">
@@ -80,13 +80,28 @@
               </a>
               使用方法
           </h3>
-          <p>
-            <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
+          <p class="rosin-how-to-use">
+            1、打开Fiddler，切换到Rosin Tab <br>
+            2、点击“Add Rule”按钮，打开规则添加面板 <br>
+            <img src="./images/step-1.jpg"> <br>
+            3、选择规则匹配类型，支持三种匹配类型：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Host——域名，如：qq.com <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Path——路径或者具体的页面地址，如：http://web.p.qq.com/coupon 或者 http://web.p.qq.com/coupon/demo.html <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Regex——正则表达式，如：^http:\/\/web\.p\.qq\.com <br>
+            4、输入具体的规则内容 <br>
+            <img src="./images/step-2.jpg"> <br>
+            5、打开测试页面，在测试页面代码中调用console打日志，或者在PC控制台模拟 <br>
+            <img src="./images/step-3.jpg"> <br>
+            6、回到Fiddler，切换到Rosin的Log选项卡，选择我们的测试页面，查看日志 <br>
+            7、对于复杂对象，双击Object字符区域选中，然后右键 <br>
+            <img src="./images/step-4.jpg"> <br>
+            8、复杂对象都会被转为JSON对象，生成一个JSON View <br>
+            <img src="./images/step-5.jpg"> <br>
+            9、功能区，一些功能按钮，包括：日志文件导出、日志清空、日志文件删除 <br>
+            10、搜索功能，搜索框中输入文本，会自动高亮匹配结果，按Enter切换匹配区域 <br>
+            <img src="./images/step-6.jpg"> <br>
+            11、javascript运行时错误信息捕获，并且支持跨域情况下的捕获（还记得那些Script.error 0的错误吗）
+            <img src="./images/step-7.jpg"> <br>
           </p>
 
           <h3>

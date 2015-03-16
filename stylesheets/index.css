@@ -1,3 +1,10 @@
 .color-warn{
   color: #f28673;
 }
+
+.rosin-how-to-use{
+  line-height: 1.618em;
+}
+.rosin-how-to-use img{
+  margin: 10px 0px;
+}
