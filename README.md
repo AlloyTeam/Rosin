@@ -76,10 +76,10 @@ v0.0.1 -- 2014.12.03
 
 [Roisn for Fiddler2]: http://alloyteam.github.io/Rosin/download/Rosin%20v1%E5%AE%89%E8%A3%85%E5%8C%85%20for%20fiddler2.zip
 [Roisn for Fiddler4]: http://alloyteam.github.io/Rosin/download/Rosin%20v1%E5%AE%89%E8%A3%85%E5%8C%85%20for%20fiddler4.zip
-[step-1]: http://alloyteam.github.io/Rosin/image/step-1.jpg
-[step-2]: http://alloyteam.github.io/Rosin/image/step-2.jpg
-[step-3]: http://alloyteam.github.io/Rosin/image/step-3.jpg
-[step-4]: http://alloyteam.github.io/Rosin/image/step-4.jpg
-[step-5]: http://alloyteam.github.io/Rosin/image/step-5.jpg
-[step-6]: http://alloyteam.github.io/Rosin/image/step-6.jpg
-[step-7]: http://alloyteam.github.io/Rosin/image/step-7.jpg
+[step-1]: http://alloyteam.github.io/Rosin/images/step-1.jpg
+[step-2]: http://alloyteam.github.io/Rosin/images/step-2.jpg
+[step-3]: http://alloyteam.github.io/Rosin/images/step-3.jpg
+[step-4]: http://alloyteam.github.io/Rosin/images/step-4.jpg
+[step-5]: http://alloyteam.github.io/Rosin/images/step-5.jpg
+[step-6]: http://alloyteam.github.io/Rosin/images/step-6.jpg
+[step-7]: http://alloyteam.github.io/Rosin/images/step-7.jpg
