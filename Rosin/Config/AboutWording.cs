@@ -7,11 +7,11 @@ namespace Rosin.Config
     class AboutWording
     {
         public static string[] WORDING_ARR= new string[]{
-            "项目地址",
-            "  https://github.com/AlloyTeam/Rosin",
-            "",
+            "版本：v1.0.1",
+            "项目地址：https://github.com/AlloyTeam/Rosin",
             "更新日志",
-            "",
+            "  v1.0.1 -- 2015.03.28",
+            "\t1、修改BUG",
             "  v1.0.0 -- 2015.01.20",
             "\t1、支持日志级别按颜色区分",
             "\t2、支持按级别筛选日志",
@@ -21,7 +21,6 @@ namespace Rosin.Config
             "\t6、支持script error信息输出",
             "\t7、支持跨域script error信息获取",
             "\t8、优化日志展示",
-            "",
             "  v0.0.1 -- 2014.12.03",
             "\t1、支持console日志接收",
             "\t2、支持fiddler日志展示",
