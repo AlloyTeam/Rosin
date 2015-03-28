@@ -32,6 +32,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -77,8 +78,10 @@
     <Compile Include="Config\FiddlerPath.cs" />
     <Compile Include="Config\Global.cs" />
     <Compile Include="Event\LogEvent.cs" />
+    <Compile Include="Item\FileStreamItem.cs" />
     <Compile Include="Item\LogItem.cs" />
     <Compile Include="Item\RuleItem.cs" />
+    <Compile Include="Manager\FileStreamManager.cs" />
     <Compile Include="Manager\InjectionListManager.cs" />
     <Compile Include="Manager\InjectionRuleManager.cs" />
     <Compile Include="Manager\LogDataManager.cs" />

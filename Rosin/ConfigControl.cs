@@ -434,17 +434,17 @@ namespace Rosin
         private void UpdateLogText()
         {
             string sFileKey = this.fileListBox.SelectedValue.ToString();
-            Debug.Log("1");
+
             if (sFileKey != this.sCurrentPageKey)
             {
                 this.sCurrentPageKey = sFileKey;
                 this.LoadNewLogText();
                 return;
             }
-            Debug.Log("2");
+
             string logText = this.oLocalData.GetNew();
             DeserializeLog(logText, true);
-            Debug.Log("3");
+
             if (this.logLevelComboBox.SelectedValue == null)
             {
                 showLog(String.Empty);
@@ -453,7 +453,6 @@ namespace Rosin
             {
                 showLog(this.logLevelComboBox.SelectedValue.ToString());
             }
-            Debug.Log("4");
         }
 
         /**
@@ -482,8 +481,14 @@ namespace Rosin
             // 非内容追加，即全量加载才做这个过滤
             if (!isAddText)
             {
-                this.logFileItem.pageUrl = logStrList[0].ToString();
-                this.logFileItem.createDate = logStrList[1].ToString();
+                try { 
+                    this.logFileItem.pageUrl = logStrList[0].ToString();
+                    this.logFileItem.createDate = logStrList[1].ToString();
+                }catch(ArgumentException err){
+                    Debug.Log("DeserializeLog error!");
+                }
+                
+
                 //移除日志头部的URL和创建时间
                 logStrList.RemoveAt(0);
                 logStrList.RemoveAt(0);
@@ -540,7 +545,7 @@ namespace Rosin
             {
                 return;
             }
-
+            
             this.logRichTextBox.Clear();
             this.logRichTextBox.AppendText(this.logFileItem.pageUrl);
             this.logRichTextBox.AppendText(Environment.NewLine);
@@ -548,7 +553,9 @@ namespace Rosin
             this.logRichTextBox.AppendText(Environment.NewLine);
             this.logRichTextBox.AppendText(Environment.NewLine);
 
-            if (this.logFileItem.logList == null || this.logFileItem.logList.Count < 1)
+            LogItem[] logListCopy = this.logFileItem.logList.ToArray();
+
+            if (logListCopy == null || logListCopy.Length < 1)
             {
                 return;
             }
@@ -562,9 +569,12 @@ namespace Rosin
                 isFilter = true;
             }
 
-            foreach (LogItem aLog in this.logFileItem.logList)
+
+
+            foreach (LogItem aLog in logListCopy)
             {
-                if (isFilter && !level.Equals(aLog.level))
+                Debug.Log("aLog.content:" + aLog.content + ", equal:" + (aLog.content == String.Empty).ToString() + ", equal null:" + (aLog.content == null).ToString());
+                if (isFilter && !level.Equals(aLog.level) || aLog.content == null)
                 {
                     continue;
                 }
@@ -591,7 +601,6 @@ namespace Rosin
                     this.logRichTextBox.AppendText("[" + aLog.level + "]");
                 }
 
-                //this.Log("aLog.content:" + aLog.content);
                 /**
                  * 匹配日志内容的JSONString
                  * 如果有JSON，就替换为Object{}的精简形式在UI上展示
@@ -602,7 +611,6 @@ namespace Rosin
                 //需要匹配JSON，并且替换
                 //注意有可能有多个JSON
                 MatchCollection matchRes = jsonRegex.Matches(aLog.content);
-
                 //如果没有匹配到JSON
                 if (matchRes == null || matchRes.Count == 0)
                 {
@@ -618,14 +626,13 @@ namespace Rosin
                         {
                             continue;
                         }
-
+                        
                         //把替换的JSON存到list里
                         JsonItem aJsonItem = new JsonItem();
                         aJsonItem.Content = match.ToString();
                         aJsonItem.Content = replaceZeroWidthSpace(aJsonItem.Content);
                         tmpJsonList.Add(aJsonItem);
                     }
-
                     if (tmpJsonList != null && tmpJsonList.Count > 0)
                     {
                         for (int i = 0; i < tmpJsonList.Count; i++)
@@ -842,12 +849,6 @@ namespace Rosin
         #endregion
 
 
-        private void Log(string text)
-        {
-            FiddlerApplication.Log.LogString(">>>>Rosin Log: " + text);
-        }
-
-
         #region JSON Viewer
         /**
          * 打开JSON View
@@ -950,7 +951,8 @@ namespace Rosin
         {
             if(this.tabControl.SelectedTab == this.tabPage3)
             {
-                this.aboutTextBox.Text = AboutWording.WORDING_1;
+                this.aboutTextBox.Text = AboutWording.GetAboutWord();
+                this.aboutTextBox.ReadOnly = true;
             }
         }
     }

@@ -57,6 +57,7 @@ namespace Rosin
             RosinCreate(this, new EventArgs());
         }
 
+
         public void FilterAndRecord(Session oSession)
         {
             if (oSession.host.ToLower() == Global.sRosinDomain)
@@ -72,28 +73,26 @@ namespace Rosin
                         bool isNew = false;
                         string sFileName = logList[0].key + ".txt";
                         string sFileDir = FiddlerPath.RosinLogDir + @"\" + sFileName;
+                        string sContent = "";
 
                         if (!File.Exists(sFileDir))
                         {
                             isNew = true;
                         }
 
-                        FileStream sFile = new FileStream(sFileDir, FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
-                        StreamWriter sw = new StreamWriter(sFile);
-
                         if (isNew)
                         {
-                            sw.WriteLine("Page URL: " + oSession.oRequest.headers["Referer"]);
-                            sw.WriteLine("Create Date: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-                            sw.WriteLine("");
+                            sContent += "Page URL: " + oSession.oRequest.headers["Referer"] + "\r\n";
+                            sContent += "Create Date: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\r\n";
+                            sContent += "\r\n";
                         }
 
                         foreach (LogItem item in logList)
                         {
-                            sw.WriteLine("[" + TimeFormat.GetTime(item.time).ToString("yyyy-MM-dd HH:mm:ss") + "] [" + item.level + "]" + item.content.ToString());
+                            sContent += "[" + TimeFormat.GetTime(item.time).ToString("yyyy-MM-dd HH:mm:ss") + "] [" + item.level + "]" + item.content.ToString() + "\r\n";
                         }
-                        
-                        sw.Close();
+
+                        FileStreamManager.Instance().Write(logList[0].key, sFileDir, sContent);
 
                         // 先写日志，在去记录，避免出现读数据空的情况
                         if (isNew)

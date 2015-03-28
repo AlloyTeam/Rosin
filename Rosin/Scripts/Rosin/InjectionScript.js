@@ -4,8 +4,8 @@
 (function(window) {
     var LOG_LEVELS = ["DEBUG", "LOG", "INFO", "WARN", "ERROR"], //日志级别
         //TODO 是否可以做成队列阈值和倒计时时间由UI配置？
-        THRESHOLD = 5, //触发日志上传的阈值
-        TIMER = 1000, //倒计时
+        THRESHOLD = 200, // 触发日志上传的阈值，设置大一点，避免高频的请求导致并发问题
+        TIMER = 1000, // 倒计时，间隔发送时间
         URL = "http://__rosin__.qq.com",
         KEY = +new Date() + '_' + parseInt(Math.random() * 1e8); // 每个页面生成一个唯一key
 
@@ -39,7 +39,7 @@
             setHeader('Content-Type', 'application/x-www-form-urlencoded');
 
             xhr.setRequestHeader = setHeader;
-
+            xhr.onreadystatechange = function(){}; // do nothing
             xhr.open('POST', URL, true);
             // chrome 控制台会看到一个报错
             // A wildcard '*' cannot be used in the 'Access-Control-Allow-Origin' header when the credentials flag is true.
@@ -135,10 +135,11 @@
                     // 不覆盖原方法执行，只是加个壳
                     (function(obj, prop) {
                         if (typeof obj[prop] === "function") {
-                            var oldFun = obj[prop];
+                            var oldFun = obj[prop].bind(obj);
                             obj[prop] = function() {
                                 source[prop].apply(source, arguments);
-                                oldFun.apply(obj, arguments);
+                                // oldFun.apply(obj, arguments);
+                                oldFun(arguments[0]);
                             };
                         } else {
                             obj[prop] = source[prop];

@@ -10,7 +10,7 @@ namespace Rosin.Util
     {
         public static void Log(string info)
         {
-            FiddlerApplication.Log.LogString(info);
+            // FiddlerApplication.Log.LogString(info); // open only in develop
         }
     }
 }
