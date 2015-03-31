@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using System.Drawing;
 
 using Rosin.Manager;
 using Rosin.Util;
@@ -60,6 +61,14 @@ namespace Rosin
                 FileStream oFS = File.Create(CONFIG.GetPath("Responses") + "rosinpost.dat");
                 oFS.Write(arrHeaders, 0, arrHeaders.Length);
                 oFS.Close();
+
+                // 模拟https的443接口响应，但是不能生效，改变实现策略，暂时注释掉
+                // string httpsHeader = "HTTP/1.1 200 Connection Established\r\nFiddlerGateway: Direct\r\nStartTime: 19:25:13.898\r\nConnection: close\r\n\r\n";
+                // byte[] arrHttpsHeaders = System.Text.Encoding.ASCII.GetBytes(httpsHeader);
+
+                // FileStream oFSHttps = File.Create(CONFIG.GetPath("Responses") + "rosinhttps.dat");
+                // oFSHttps.Write(arrHttpsHeaders, 0, arrHttpsHeaders.Length);
+                // oFSHttps.Close();
             }
 
             this.iInjection = new Injection(); // 实例化注入模块
@@ -111,12 +120,32 @@ namespace Rosin
         {
             //插件标签页
             TabPage oPage = new TabPage("Rosin");
+
+            //using (var stream = GetType().Assembly.GetManifestResourceStream(@"E:\svn\connect_proj\trunk\tools\rosin\Rosin\favicon.ico"))
+            //{
+            //    if (stream != null)
+            //    {
+            //        FiddlerApplication.UI.imglSessionIcons.Images.Add(Image.FromStream(stream));
+            //        oPage.ImageIndex = Enum.GetNames(typeof(SessionIcons)).Length;
+            //    }
+            //}
+
             //TODO 图标再说
             oPage.ImageIndex = (int)Fiddler.SessionIcons.RPC;
+
+            //Image newImage = Image.FromFile(@"E:\svn\connect_proj\trunk\tools\rosin\Rosin\test.jpg");
+            //FiddlerApplication.UI.imglSessionIcons.Images.Add("Rosin", newImage);
+            //var iconIndex = FiddlerApplication.UI.imglSessionIcons.Images.IndexOfKey("Rosin");
+            //oPage.ImageKey = "Rosin";
+
+            //var icon = new Icon(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(@"E:\svn\connect_proj\trunk\tools\rosin\Rosin\favicon.ico"));
+            //string imageKey = "Rosin";
+            //FiddlerApplication.UI.imglSessionIcons.Images.Add(imageKey, icon);
+            //var iconIndex = FiddlerApplication.UI.imglSessionIcons.Images.IndexOfKey(imageKey);
+            //oPage.ImageIndex = iconIndex;
+            
             oPage.Controls.Add(this.oConfigControl);
             this.oConfigControl.Dock = DockStyle.Fill;
-            //FiddlerApplication.UI.imglSessionIcons.Images.Add();
-
 
             int size = FiddlerApplication.UI.tabsViews.TabPages.Count;
             FiddlerApplication.UI.tabsViews.TabPages.Insert(size, oPage);

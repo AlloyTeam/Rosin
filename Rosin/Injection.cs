@@ -10,6 +10,7 @@ using Fiddler;
 using Rosin.Config;
 using Rosin.Item;
 using Rosin.Manager;
+using Rosin.Util;
 
 namespace Rosin
 {
@@ -59,9 +60,11 @@ namespace Rosin
 
         public void FilterAndInject(Session oSession)
         {
+            Debug.Log("FilterAndInject: MatchRule check!" + oSession.fullUrl);
             // response content type is text/html
             if (bGlobalEnabled && oSession.oResponse.headers.ExistsAndContains("Content-Type", "text/html"))
             {
+                Debug.Log("FilterAndInject: MatchRule check!");
                 // request url is match the user's config rules
                 if(this.MatchRule(oSession))
                 {
