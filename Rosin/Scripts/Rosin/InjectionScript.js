@@ -6,8 +6,13 @@
         //TODO 是否可以做成队列阈值和倒计时时间由UI配置？
         THRESHOLD = 200, // 触发日志上传的阈值，设置大一点，避免高频的请求导致并发问题
         TIMER = 1000, // 倒计时，间隔发送时间
-        URL = "http://__rosin__.qq.com",
+        URL = location.protocol + "//__rosin__.qq.com",
         KEY = +new Date() + '_' + parseInt(Math.random() * 1e8); // 每个页面生成一个唯一key
+
+    // https的请求，使用另外的通信协议
+    if(location.protocol === "https:") {
+        URL = "https://" + location.host + '/?__rosin__';
+    }
 
     /**
      * 上传任务队列

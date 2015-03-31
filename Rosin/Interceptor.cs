@@ -60,10 +60,14 @@ namespace Rosin
 
         public void FilterAndRecord(Session oSession)
         {
-            if (oSession.host.ToLower() == Global.sRosinDomain)
+            Debug.Log("oSession.host.ToLower: " + oSession.host.ToLower() + ", Global.sRosinDomain:" + Global.sRosinDomain);
+            Debug.Log("oSession.fullUrl:" + oSession.fullUrl);
+            Debug.Log("rosin target url:" + ("http://" + oSession.host + "/?__rosin__"));
+            // 支持https的请求
+            // 由于https的请求需要服务器的配合，单凭fiddler没办法模拟，所以这里使用一个到页面所在https的请求，带上标识，拦截掉
+            if (oSession.host.ToLower() == Global.sRosinDomain || oSession.fullUrl == ("https://" + oSession.host + "/?__rosin__"))
             {
                 string sRequestBodyString = oSession.GetRequestBodyAsString();
-
                 if(sRequestBodyString != "")
                 {
                     List<LogItem> logList = JsonConvert.DeserializeObject<List<LogItem>>(sRequestBodyString);
@@ -105,7 +109,15 @@ namespace Rosin
                     }
                 }
 
-                oSession["x-replywithfile"] = "rosinpost.dat";
+                //if (oSession.port == 443)
+                //{
+                //    oSession["x-replywithfile"] = "rosinhttps.dat";
+                //}
+                //else
+                //{
+                    oSession["x-replywithfile"] = "rosinpost.dat";
+                //}
+                
                 oSession["ui-hide"] = "true";
 
                 // 这个接口在低版本没有，会报错

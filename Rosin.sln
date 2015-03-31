@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rosin", "Rosin\Rosin.csproj", "{9FE5ADBE-9534-458C-92C7-BCFC6A8D9935}"
 EndProject
@@ -13,7 +13,7 @@ Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "Fiddler", "D:\Program Files
 		Executable = D:\Program Files (x86)\Fiddler2\Fiddler.exe
 		RemoteMachine = YUNSHENGLI-PC0
 		StartingDirectory = D:\Program Files (x86)\Fiddler2
-		Environment = 默认值
+		Environment = Default
 		LaunchingEngine = 00000000-0000-0000-0000-000000000000
 		UseLegacyDebugEngines = No
 		LaunchSQLEngine = No
@@ -28,12 +28,12 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9FE5ADBE-9534-458C-92C7-BCFC6A8D9935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9FE5ADBE-9534-458C-92C7-BCFC6A8D9935}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9FE5ADBE-9534-458C-92C7-BCFC6A8D9935}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{9FE5ADBE-9534-458C-92C7-BCFC6A8D9935}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{9FE5ADBE-9534-458C-92C7-BCFC6A8D9935}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FE5ADBE-9534-458C-92C7-BCFC6A8D9935}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3AE264FB-52DC-4295-A37F-CE63CAF54930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3AE264FB-52DC-4295-A37F-CE63CAF54930}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3AE264FB-52DC-4295-A37F-CE63CAF54930}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{3AE264FB-52DC-4295-A37F-CE63CAF54930}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{3AE264FB-52DC-4295-A37F-CE63CAF54930}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AE264FB-52DC-4295-A37F-CE63CAF54930}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FC894A4C-C18E-47CA-844C-784C5E731A30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FC894A4C-C18E-47CA-844C-784C5E731A30}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 	EndGlobalSection

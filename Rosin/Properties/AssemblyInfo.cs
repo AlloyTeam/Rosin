@@ -1,8 +1,11 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Security;
 
 using Fiddler;
+
+[assembly: SecurityRules(SecurityRuleSet.Level1)]
 
 // set require fiddler version
 [assembly: Fiddler.RequiredVersion("2.3.5.0")]

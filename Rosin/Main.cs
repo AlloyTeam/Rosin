@@ -60,6 +60,14 @@ namespace Rosin
                 FileStream oFS = File.Create(CONFIG.GetPath("Responses") + "rosinpost.dat");
                 oFS.Write(arrHeaders, 0, arrHeaders.Length);
                 oFS.Close();
+
+                // 模拟https的443接口响应，但是不能生效，改变实现策略，暂时注释掉
+                // string httpsHeader = "HTTP/1.1 200 Connection Established\r\nFiddlerGateway: Direct\r\nStartTime: 19:25:13.898\r\nConnection: close\r\n\r\n";
+                // byte[] arrHttpsHeaders = System.Text.Encoding.ASCII.GetBytes(httpsHeader);
+
+                // FileStream oFSHttps = File.Create(CONFIG.GetPath("Responses") + "rosinhttps.dat");
+                // oFSHttps.Write(arrHttpsHeaders, 0, arrHttpsHeaders.Length);
+                // oFSHttps.Close();
             }
 
             this.iInjection = new Injection(); // 实例化注入模块
