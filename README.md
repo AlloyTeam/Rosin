@@ -3,6 +3,15 @@ A tool for web developers debug mobile page. http://alloyteam.github.io/Rosin/
 
 Rosin是一个Fiddler插件，协助开发者进行移动端页面开发调试，是移动端web开发、调试利器。
 
+# 说明
+
+由于Fiddler有2+和4+两种不同的版本，分别对应.Net Framework 2.0和.Net Framework 4.0。另外，两个版本在开发编译时都有不少区别，所以这里的分支也分为两个版本，
+master对应的是Fiddler 2+的Rosin，fiddler4-trunk对应Fiddler 4+的Rosin
+
+# 开发编译环境配置
+
+请参考链接：https://github.com/AlloyTeam/Rosin/blob/gh-pages/how-build-rosin.md
+
 # 版本
 
 v1.0.2
@@ -24,7 +33,7 @@ v1.0.2
 * 日志内容展示、搜索、过滤
 * 复杂对象JOSN解析
 * 脚本运行错误捕获
-* 支持https页面日志输出
+* 支持https日志输出
 
 # 使用方法
 
@@ -54,7 +63,7 @@ v1.0.2
 
 v1.0.2 -- 2015.03.31
 
-* 支持https日志输出
+* 支持https页面日志输出
 * 修复兼容性问题
 
 v1.0.0 -- 2015.01.20  
