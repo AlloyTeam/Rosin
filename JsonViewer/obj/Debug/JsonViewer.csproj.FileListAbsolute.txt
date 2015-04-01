@@ -1,0 +1,11 @@
+E:\github\Rosin-master\JsonViewer\bin\Debug\JsonViewer.dll
+E:\github\Rosin-master\JsonViewer\bin\Debug\JsonViewer.pdb
+E:\github\Rosin-master\JsonViewer\bin\Debug\Newtonsoft.Json.dll
+E:\github\Rosin-master\JsonViewer\obj\Debug\EPocalipse.Json.Viewer.GridVisualizer.resources
+E:\github\Rosin-master\JsonViewer\obj\Debug\EPocalipse.Json.Viewer.JsonViewer.resources
+E:\github\Rosin-master\JsonViewer\obj\Debug\EPocalipse.Json.Viewer.JsonObjectVisualizer.resources
+E:\github\Rosin-master\JsonViewer\obj\Debug\EPocalipse.Json.Viewer.Properties.Resources.resources
+E:\github\Rosin-master\JsonViewer\obj\Debug\JsonViewer.csproj.GenerateResource.Cache
+E:\github\Rosin-master\JsonViewer\obj\Debug\JsonViewer.dll
+E:\github\Rosin-master\JsonViewer\obj\Debug\JsonViewer.pdb
+E:\github\Rosin-master\JsonViewer\obj\Debug\JsonViewer.csprojResolveAssemblyReference.cache

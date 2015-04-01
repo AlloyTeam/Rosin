@@ -121,34 +121,17 @@ namespace Rosin
             //插件标签页
             TabPage oPage = new TabPage("Rosin");
 
-            //using (var stream = GetType().Assembly.GetManifestResourceStream(@"E:\svn\connect_proj\trunk\tools\rosin\Rosin\favicon.ico"))
-            //{
-            //    if (stream != null)
-            //    {
-            //        FiddlerApplication.UI.imglSessionIcons.Images.Add(Image.FromStream(stream));
-            //        oPage.ImageIndex = Enum.GetNames(typeof(SessionIcons)).Length;
-            //    }
-            //}
-
-            //TODO 图标再说
-            oPage.ImageIndex = (int)Fiddler.SessionIcons.RPC;
-
-            //Image newImage = Image.FromFile(@"E:\svn\connect_proj\trunk\tools\rosin\Rosin\test.jpg");
-            //FiddlerApplication.UI.imglSessionIcons.Images.Add("Rosin", newImage);
-            //var iconIndex = FiddlerApplication.UI.imglSessionIcons.Images.IndexOfKey("Rosin");
-            //oPage.ImageKey = "Rosin";
-
-            //var icon = new Icon(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(@"E:\svn\connect_proj\trunk\tools\rosin\Rosin\favicon.ico"));
-            //string imageKey = "Rosin";
-            //FiddlerApplication.UI.imglSessionIcons.Images.Add(imageKey, icon);
-            //var iconIndex = FiddlerApplication.UI.imglSessionIcons.Images.IndexOfKey(imageKey);
-            //oPage.ImageIndex = iconIndex;
-            
             oPage.Controls.Add(this.oConfigControl);
             this.oConfigControl.Dock = DockStyle.Fill;
 
             int size = FiddlerApplication.UI.tabsViews.TabPages.Count;
             FiddlerApplication.UI.tabsViews.TabPages.Insert(size, oPage);
+
+            // add tab 后再添加图标，具体原因参考： 
+            // https://github.com/telerik/fiddler-docs/issues/4
+            
+            FiddlerApplication.UI.imglSessionIcons.Images.Add("Rosin", Rosin.Properties.Resources.icon);
+            oPage.ImageKey = "Rosin";
         }
 
         public void OnBeforeUnload()
