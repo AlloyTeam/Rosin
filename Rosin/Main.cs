@@ -119,15 +119,18 @@ namespace Rosin
         {
             //插件标签页
             TabPage oPage = new TabPage("Rosin");
-            //TODO 图标再说
-            oPage.ImageIndex = (int)Fiddler.SessionIcons.RPC;
+
             oPage.Controls.Add(this.oConfigControl);
             this.oConfigControl.Dock = DockStyle.Fill;
-            //FiddlerApplication.UI.imglSessionIcons.Images.Add();
-
 
             int size = FiddlerApplication.UI.tabsViews.TabPages.Count;
             FiddlerApplication.UI.tabsViews.TabPages.Insert(size, oPage);
+
+            // add tab 后再添加图标，具体原因参考： 
+            // https://github.com/telerik/fiddler-docs/issues/4
+
+            FiddlerApplication.UI.imglSessionIcons.Images.Add("Rosin", Rosin.Properties.Resources.icon);
+            oPage.ImageKey = "Rosin";
         }
 
         public void OnBeforeUnload()
