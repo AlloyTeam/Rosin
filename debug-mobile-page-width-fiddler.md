@@ -36,7 +36,7 @@
 
 1. 设置 -> WLAN，长按当前连接的wifi，点击修改网络
 2. 勾选“显示高级选项”，代理选择手动，代理服务器主机名填写PC的IP地址，代理服务器端口设为8888，点击保存
-<img src="./images/fiddler-proxy-andorid.png" width="320">
+<img src="./images/fiddler-proxy-android.png" width="320">
 
 ### 运行截图
 
