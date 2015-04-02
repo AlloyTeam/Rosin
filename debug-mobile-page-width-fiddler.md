@@ -30,10 +30,15 @@
 
 1. 设置 -> 无线局域网，点击当前连接的wifi
 2. 滚动到HTTP代理栏，选择 “手动”，服务器填写PC的IP地址，端口号填写在Fiddler中设置的端口号，即8888
-<img src="./images/fiddler-proxy-iphone.jpg" width="320">
+<img src="./images/fiddler-proxy-iphone.png" width="320">
 
 ### 设置Android代理
 
-1. 
+1. 设置 -> WLAN，长按当前连接的wifi，点击修改网络
+2. 勾选“显示高级选项”，代理选择手动，代理服务器主机名填写PC的IP地址，代理服务器端口设为8888，点击保存
+<img src="./images/fiddler-proxy-andorid.png" width="320">
 
-运行截图
+### 运行截图
+
+如果一切顺利的话，通过手机访问网页就能看到这样的请求了
+<img src="./images/fiddler-proxy-run-result.jpg" width="550">
