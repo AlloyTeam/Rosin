@@ -2,7 +2,7 @@
 
 ## 原理图
 
-![Fiddler Proxy原理图](./images/fiddler-proxy.png)
+![Fiddler Proxy原理图](./images/fiddler-proxy.png =450X429)
 
 ## 简单说明（详细见后文教程）
 
@@ -13,28 +13,27 @@
 
 ## 详细教程
 
-设置Fiddler
+### 设置Fiddler
 
 1. 打开Fiddler，执行菜单栏 Tools -> Fiddler Options 打开设置界面
 2. 切换到Connections选项卡，如图设置和勾选
 ![set fiddler](./images/fiddler-proxy-set-fiddler.png)
 3. 如果要捕获https的请求，切换到HTTPS选项卡，勾选对应的选项
 
-获取PC的IP地址
+### 获取PC的IP地址
 
 1. 打开命令行工具，运行 `ipconfig`
 2. 无线局域网的IP地址，即我们需要的地址，这里是 `172.27.23.1`
-![get ip](./images/fiddler-proxy-get-ip.png)
+![get ip](./images/fiddler-proxy-get-ip.jpg)
 
-设置iPhone代理
+### 设置iPhone代理
 
 1. 设置 -> 无线局域网，点击当前连接的wifi
 2. 滚动到HTTP代理栏，选择 “手动”，服务器填写PC的IP地址，端口号填写在Fiddler中设置的端口号，即8888
 ![iphone proxy](./images/fiddler-proxy-iphone.png)
 
-设置Android代理
+### 设置Android代理
 
 1. 
 
 运行截图
-![set fiddler](./images/fiddler-proxy-set-fiddler.png)
