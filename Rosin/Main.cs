@@ -15,7 +15,7 @@ namespace Rosin
     /**
      * 入口类
      * 初始化环境、以及实例化各个功能模块
-     * 
+     * 22222
      * Date: 2014/11/13
      * */
     public class Main : IAutoTamper
