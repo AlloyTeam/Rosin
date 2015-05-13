@@ -45,12 +45,6 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Rosin.Base\Rosin.Base.csproj">
-      <Project>{a943cc2f-fa38-4079-8939-4b30a3f9f1e5}</Project>
-      <Name>Rosin.Base</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>tasklist /fi "imagename eq Fiddler.exe" |find ":" &gt; nul

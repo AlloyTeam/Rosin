@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rosin.Base", "Rosin.Base\Rosin.Base.csproj", "{A943CC2F-FA38-4079-8939-4B30A3F9F1E5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RosinForFiddler2", "RosinForFiddler2\RosinForFiddler2.csproj", "{F9E0D006-B806-4514-B328-AFBA1E560409}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RosinForFiddler4", "RosinForFiddler4\RosinForFiddler4.csproj", "{B9DBA0F3-99E0-4261-900A-C6523C84B25F}"
@@ -19,16 +17,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rosin.Forms", "Rosin.Forms\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rosin.Channel", "Rosin.Channel\Rosin.Channel.csproj", "{0872B112-5A96-49D3-BCFC-14EB558B259D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rosin.Base", "Rosin.Base\Rosin.Base.csproj", "{A943CC2F-FA38-4079-8939-4B30A3F9F1E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A943CC2F-FA38-4079-8939-4B30A3F9F1E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A943CC2F-FA38-4079-8939-4B30A3F9F1E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A943CC2F-FA38-4079-8939-4B30A3F9F1E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A943CC2F-FA38-4079-8939-4B30A3F9F1E5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F9E0D006-B806-4514-B328-AFBA1E560409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F9E0D006-B806-4514-B328-AFBA1E560409}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9E0D006-B806-4514-B328-AFBA1E560409}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,6 +53,10 @@ Global
 		{0872B112-5A96-49D3-BCFC-14EB558B259D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0872B112-5A96-49D3-BCFC-14EB558B259D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0872B112-5A96-49D3-BCFC-14EB558B259D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A943CC2F-FA38-4079-8939-4B30A3F9F1E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A943CC2F-FA38-4079-8939-4B30A3F9F1E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A943CC2F-FA38-4079-8939-4B30A3F9F1E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A943CC2F-FA38-4079-8939-4B30A3F9F1E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
