@@ -73,7 +73,7 @@ for /f "tokens=1 delims=." %25%25a in ("%25ValueValue%25") do (
     set VersionHeader=%25%25a
 )
 
-if %25VersionHeader%25 equ 2 (
+if %25VersionHeader%25 equ 4 (
     copy $(TargetDir)Rosin*.dll "%25FiddlerScriptPath%25"
     echo %25VersionHeader%25
 )</PostBuildEvent>

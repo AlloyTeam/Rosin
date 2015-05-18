@@ -9,7 +9,8 @@ namespace AlloyTeam.Rosin.WebServer
     {
         public static void Main(string[] args)
         {
-            Logger.Info("a");
+            Server s = new Server("http://localhost:9527/");
+            s.Start();
             Console.Read();
         }
     }
