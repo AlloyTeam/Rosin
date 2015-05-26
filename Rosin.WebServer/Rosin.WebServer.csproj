@@ -39,6 +39,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
+    <Compile Include="HttpHandler\ChannelHandler.cs" />
+    <Compile Include="HttpHandler\IHttpHandler.cs" />
+    <Compile Include="HttpHandler\NoActionHandler.cs" />
+    <Compile Include="HttpHandler\StaticFileHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="Session.cs" />
@@ -50,7 +54,14 @@
       <Name>Rosin.Base</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Scripts\Rosin\Web\core.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /s /e /i /y $(ProjectDir)Scripts\*.* $(TargetDir)Scripts</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
