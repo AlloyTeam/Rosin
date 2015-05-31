@@ -22,7 +22,7 @@ namespace AlloyTeam.Rosin.WebServer
 
         public Server(string prefix)
         {
-            string curPath = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/Rosin/Web/";
+            string curPath = AppDomain.CurrentDomain.BaseDirectory + @"\Scripts\Rosin\Web\";
             ResourcePath = new KeyValuePair<string, string>("/_Rosin_Resource/", curPath);
             Prefix = prefix;
             listener = new HttpListener();
@@ -82,6 +82,7 @@ namespace AlloyTeam.Rosin.WebServer
             if (vPath.StartsWith(ResourcePath.Key))
             {
                 serverContext.VirtualDirectory = ResourcePath.Value;
+                serverContext.RequestAction = vPath.Replace(ResourcePath.Key, "/");
                 handler = new StaticFileHandler();
             }
             else if (vPath.StartsWith(CHANNELPREVFIX))

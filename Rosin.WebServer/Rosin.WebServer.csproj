@@ -43,6 +43,7 @@
     <Compile Include="HttpHandler\IHttpHandler.cs" />
     <Compile Include="HttpHandler\NoActionHandler.cs" />
     <Compile Include="HttpHandler\StaticFileHandler.cs" />
+    <Compile Include="MIMEHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="Session.cs" />
