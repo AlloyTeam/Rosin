@@ -55,7 +55,6 @@
       <Name>Rosin.Base</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Scripts\Rosin\Web\core.js" />
   </ItemGroup>

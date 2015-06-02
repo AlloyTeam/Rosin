@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Configuration\AppConfigReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\EncodingHelper.cs" />
     <Compile Include="Util\Logger\Logger.cs" />
     <Compile Include="Util\Logger\LoggerFactory.cs" />
   </ItemGroup>

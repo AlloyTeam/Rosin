@@ -35,7 +35,7 @@ namespace AlloyTeam.Rosin.WebServer
         {
             Logger.Debug("Server start at " + Prefix);
             listener.Start();
-            listener.BeginGetContext(new AsyncCallback(GetContextCallBack), null);
+            listener.BeginGetContext(new AsyncCallback(GetContextCallBack), listener);
         }
 
         public void Stop()

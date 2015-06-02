@@ -10,11 +10,12 @@ namespace AlloyTeam.Rosin.WebServer
     {
         private static Dictionary<string, string> MIMEMap = new Dictionary<string, string>(); 
 
-        public static string getMIMEType(string extName, string MIME)
+        public static string getMIMEType(string extName)
         {
             string mimeConfigString;
             string[] items;
             string itemKey;
+            string itemValue;
 
             if (MIMEMap.Count == 0)
             {
@@ -24,11 +25,12 @@ namespace AlloyTeam.Rosin.WebServer
                 for (int i = 0; i < items.Length; i++)
                 {
                     itemKey = items[i].Split(';')[0].Trim();
-                    MIMEMap.Add(itemKey, items[i].Trim());
+                    itemValue = items[i].Split(';')[1].Trim();
+                    MIMEMap.Add(itemKey, itemValue);
                 }
             }
 
-            if (MIME.Contains(extName))
+            if (MIMEMap.ContainsKey(extName))
             {
                 return MIMEMap[extName];
             }
