@@ -18,21 +18,54 @@ namespace AlloyTeam.Rosin.WebServer.HttpHandler
             string ext;
             string mime;
             HttpListenerResponse res = ctx.Response;
+            int size = 1024;
+            char[] buf = new char[size];
+            long fileLength = 0;
+            FileInfo fi;
+            int start = 0, count = 0, i = 0;
 
             staticFilePath = serverContext.VirtualDirectory + (serverContext.RequestAction).Replace("/", "\\").Replace(@"\\", @"\");
             ext = Path.GetExtension(staticFilePath);
             mime = MIMEHelper.getMIMEType(ext);
 
+            try
+            {
+                fi = new FileInfo(staticFilePath);
+                fileLength = fi.Length;
+                res.StatusCode = 200;
+            }
+            catch (FileNotFoundException ex)
+            {
+                res.StatusCode = 404;
+            }
+
             //使用Writer输出http响应代码
             using (StreamWriter writer = new StreamWriter(ctx.Response.OutputStream))
             {
                 //输出Header
-                res.StatusCode = 200;
-                res.Headers.Add(string.Format("Content-Type: {0}", mime));
+                if (res.StatusCode == 200)
+                {
+                    res.Headers.Add(string.Format("Content-Type: {0}", mime));
 
-                sr = new StreamReader(staticFilePath, EncodingHelper.detectTextEncoding(staticFilePath));
+                    sr = new StreamReader(staticFilePath, EncodingHelper.detectTextEncoding(staticFilePath));
 
-                writer.Flush();
+                    do
+                    {
+                        if (fileLength - i * size >= size)
+                        {
+                            count = size;
+                        }
+                        else
+                        {
+                            count = (int)(fileLength - i * size);
+                        }
+
+                        sr.Read(buf, 0, count);
+                        writer.Write(buf, 0, count);
+                        i++;
+                        writer.Flush();
+                    } while (!sr.EndOfStream);
+                }
             }
         }
     }
