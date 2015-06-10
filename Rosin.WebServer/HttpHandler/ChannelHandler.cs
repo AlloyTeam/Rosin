@@ -9,7 +9,7 @@ namespace AlloyTeam.Rosin.WebServer.HttpHandler
     {
         public void Process(HttpListenerContext ctx, Context serverContext)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

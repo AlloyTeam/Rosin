@@ -22,7 +22,7 @@ namespace AlloyTeam.Rosin.WebServer.HttpHandler
             char[] buf = new char[size];
             long fileLength = 0;
             FileInfo fi;
-            int start = 0, count = 0, i = 0;
+            int count = 0, i = 0;
 
             staticFilePath = serverContext.VirtualDirectory + (serverContext.RequestAction).Replace("/", "\\").Replace(@"\\", @"\");
             ext = Path.GetExtension(staticFilePath);
@@ -36,6 +36,7 @@ namespace AlloyTeam.Rosin.WebServer.HttpHandler
             }
             catch (FileNotFoundException ex)
             {
+                Logger.Error(ex);
                 res.StatusCode = 404;
             }
 

@@ -1,1 +1,1 @@
-﻿console.info("a");
+console.info("a");
