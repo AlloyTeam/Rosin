@@ -15,10 +15,12 @@ namespace AlloyTeam.Rosin.WebServer
         private HttpListener listener;
         private delegate void delegate_HttpHandler(HttpListenerContext ctx, Context serverContext);
         private const string CHANNELPREVFIX = "/_Rosin_Channel/";
+        private const string REQUESTPREVFIX = "/_Rosin_Request/";
 
         public string Prefix { get; private set; }
 
         public KeyValuePair<string, string> ResourcePath { get; set; }
+        public Dictionary<string, Context> ContextPool = new Dictionary<string,Context>();
 
         public Server(string prefix)
         {
@@ -77,6 +79,17 @@ namespace AlloyTeam.Rosin.WebServer
             string vPath = ctx.Request.Url.AbsolutePath;
             string socketId = ctx.Request.RemoteEndPoint.Address.ToString() + ":" + ctx.Request.RemoteEndPoint.Port.ToString();
 
+            //上下文池
+            serverContext.Channel = new Channel();
+            if (ContextPool.ContainsKey(socketId))
+            {
+                ContextPool.Add(socketId, serverContext);
+            }
+            else
+            {
+                ContextPool[socketId] = serverContext;
+            }
+            
             IHttpHandler handler = null;
 
             if (vPath.StartsWith(ResourcePath.Key))
@@ -87,7 +100,11 @@ namespace AlloyTeam.Rosin.WebServer
             }
             else if (vPath.StartsWith(CHANNELPREVFIX))
             {
-                handler = new ChannelHandler();
+                handler = new ChannelHandler(serverContext.Channel);
+            }
+            else if (vPath.StartsWith(REQUESTPREVFIX))
+            {
+                handler = new RequestHandler();
             }
             else
             {

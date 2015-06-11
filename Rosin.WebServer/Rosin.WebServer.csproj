@@ -38,10 +38,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Channel.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="HttpHandler\ChannelHandler.cs" />
     <Compile Include="HttpHandler\IHttpHandler.cs" />
     <Compile Include="HttpHandler\NoActionHandler.cs" />
+    <Compile Include="HttpHandler\RequestHandler.cs" />
     <Compile Include="HttpHandler\StaticFileHandler.cs" />
     <Compile Include="MIMEHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
