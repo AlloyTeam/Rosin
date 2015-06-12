@@ -48,24 +48,25 @@ namespace AlloyTeam.Rosin.WebServer.HttpHandler
                 {
                     res.Headers.Add(string.Format("Content-Type: {0}", mime));
 
-                    sr = new StreamReader(staticFilePath, EncodingHelper.detectTextEncoding(staticFilePath));
-
-                    do
+                    using (sr = new StreamReader(staticFilePath, EncodingHelper.detectTextEncoding(staticFilePath)))
                     {
-                        if (fileLength - i * size >= size)
+                        do
                         {
-                            count = size;
-                        }
-                        else
-                        {
-                            count = (int)(fileLength - i * size);
-                        }
+                            if (fileLength - i * size >= size)
+                            {
+                                count = size;
+                            }
+                            else
+                            {
+                                count = (int)(fileLength - i * size);
+                            }
 
-                        sr.Read(buf, 0, count);
-                        writer.Write(buf, 0, count);
-                        i++;
-                        writer.Flush();
-                    } while (!sr.EndOfStream);
+                            sr.Read(buf, 0, count);
+                            writer.Write(buf, 0, count);
+                            i++;
+                            writer.Flush();
+                        } while (!sr.EndOfStream);
+                    }
                 }
             }
         }

@@ -16,6 +16,7 @@ namespace AlloyTeam.Rosin.WebServer
         private delegate void delegate_HttpHandler(HttpListenerContext ctx, Context serverContext);
         private const string CHANNELPREVFIX = "/_Rosin_Channel/";
         private const string REQUESTPREVFIX = "/_Rosin_Request/";
+        private const string RESOURCEPREVFIX = "/_Rosin_Resource/";
 
         public string Prefix { get; private set; }
 
@@ -25,7 +26,7 @@ namespace AlloyTeam.Rosin.WebServer
         public Server(string prefix)
         {
             string curPath = AppDomain.CurrentDomain.BaseDirectory + @"\Scripts\Rosin\Web\";
-            ResourcePath = new KeyValuePair<string, string>("/_Rosin_Resource/", curPath);
+            ResourcePath = new KeyValuePair<string, string>(RESOURCEPREVFIX, curPath);
             Prefix = prefix;
             listener = new HttpListener();
 
@@ -52,6 +53,11 @@ namespace AlloyTeam.Rosin.WebServer
             }
 
             Logger.Debug("Server closed!");
+        }
+
+        public void SendChannelMsg(string msg)
+        {
+            return;
         }
 
         private void GetContextCallBack(IAsyncResult ar)
@@ -81,7 +87,7 @@ namespace AlloyTeam.Rosin.WebServer
 
             //上下文池
             serverContext.Channel = new Channel();
-            if (ContextPool.ContainsKey(socketId))
+            if (!ContextPool.ContainsKey(socketId))
             {
                 ContextPool.Add(socketId, serverContext);
             }
@@ -94,16 +100,19 @@ namespace AlloyTeam.Rosin.WebServer
 
             if (vPath.StartsWith(ResourcePath.Key))
             {
+                //使用静态服务器处理
                 serverContext.VirtualDirectory = ResourcePath.Value;
                 serverContext.RequestAction = vPath.Replace(ResourcePath.Key, "/");
                 handler = new StaticFileHandler();
             }
             else if (vPath.StartsWith(CHANNELPREVFIX))
             {
+                //Channel请求处理
                 handler = new ChannelHandler(serverContext.Channel);
             }
             else if (vPath.StartsWith(REQUESTPREVFIX))
             {
+                //动态请求处理
                 handler = new RequestHandler();
             }
             else
