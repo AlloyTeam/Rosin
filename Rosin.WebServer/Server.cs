@@ -7,6 +7,7 @@ using System.IO;
 using System.Threading;
 using AlloyTeam.Rosin.Base.Util.Logger;
 using AlloyTeam.Rosin.WebServer.HttpHandler;
+using AlloyTeam.Rosin.WebServer.Channel;
 
 namespace AlloyTeam.Rosin.WebServer
 {
@@ -17,26 +18,29 @@ namespace AlloyTeam.Rosin.WebServer
         private const string CHANNELPREVFIX = "/_Rosin_Channel/";
         private const string REQUESTPREVFIX = "/_Rosin_Request/";
         private const string RESOURCEPREVFIX = "/_Rosin_Resource/";
+        private const string LIVERELOADPREFIX = "/Live_Reload/";
 
-        public string Prefix { get; private set; }
+        public List<string> Prefixs { get; private set; }
 
         public KeyValuePair<string, string> ResourcePath { get; set; }
         public Dictionary<string, Context> ContextPool = new Dictionary<string,Context>();
 
-        public Server(string prefix)
+        public Server(List<string> prefixs)
         {
             string curPath = AppDomain.CurrentDomain.BaseDirectory + @"\Scripts\Rosin\Web\";
             ResourcePath = new KeyValuePair<string, string>(RESOURCEPREVFIX, curPath);
-            Prefix = prefix;
+            Prefixs = prefixs;
             listener = new HttpListener();
 
-            listener.Prefixes.Add(Prefix);
+            Prefixs.ForEach(p => listener.Prefixes.Add(p));
+
+            //listener.Prefixes.Add(Prefix);
             listener.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
         }
 
         public void Start()
         {
-            Logger.Debug("Server start at " + Prefix);
+            Prefixs.ForEach(p => Logger.Debug("Server start at " + p));
             listener.Start();
             listener.BeginGetContext(new AsyncCallback(GetContextCallBack), listener);
         }
@@ -86,7 +90,6 @@ namespace AlloyTeam.Rosin.WebServer
             string socketId = ctx.Request.RemoteEndPoint.Address.ToString() + ":" + ctx.Request.RemoteEndPoint.Port.ToString();
 
             //上下文池
-            serverContext.Channel = new Channel();
             if (!ContextPool.ContainsKey(socketId))
             {
                 ContextPool.Add(socketId, serverContext);
@@ -107,8 +110,21 @@ namespace AlloyTeam.Rosin.WebServer
             }
             else if (vPath.StartsWith(CHANNELPREVFIX))
             {
+                //live-reload处理
+                if (vPath.IndexOf(LIVERELOADPREFIX) > 0)
+                {
+                    serverContext.Channel = new LiveReloadChannel();
+                }
+
                 //Channel请求处理
-                handler = new ChannelHandler(serverContext.Channel);
+                if (serverContext.Channel != null)
+                {
+                    handler = new ChannelHandler(serverContext.Channel);
+                }
+                else
+                {
+                    handler = new NoActionHandler();
+                }
             }
             else if (vPath.StartsWith(REQUESTPREVFIX))
             {

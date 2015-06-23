@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using AlloyTeam.Rosin.WebServer.Channel;
 
 namespace AlloyTeam.Rosin.WebServer
 {
@@ -9,6 +10,6 @@ namespace AlloyTeam.Rosin.WebServer
         public string VirtualDirectory { get; set; }
         public string RequestAction { get; set; }
         public string socketID { get; set; }
-        public Channel Channel { get; set; }
+        public IChannel Channel { get; set; }
     }
 }

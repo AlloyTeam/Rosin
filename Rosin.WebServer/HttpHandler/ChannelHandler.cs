@@ -4,14 +4,15 @@ using System.Text;
 using System.Net;
 using System.IO;
 using System.Threading;
+using AlloyTeam.Rosin.WebServer.Channel;
 
 namespace AlloyTeam.Rosin.WebServer.HttpHandler
 {
     public class ChannelHandler : IHttpHandler
     {
-        private Channel _channel;
+        private IChannel _channel;
 
-        public ChannelHandler(Channel channel)
+        public ChannelHandler(IChannel channel)
         {
             _channel = channel;
         }

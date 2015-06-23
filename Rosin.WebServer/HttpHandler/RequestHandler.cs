@@ -24,11 +24,12 @@ namespace AlloyTeam.Rosin.WebServer.HttpHandler
             //使用Writer输出http响应代码
             using (StreamWriter writer = new StreamWriter(ctx.Response.OutputStream))
             {
-                if (action == "GetVersion")
+                if (action == "getVersion")
                 {
                     _response.StatusCode = 200;
                     _response.Headers.Add("Content-Type: .js; application/x-javascript");
-                    writer.Write("v = 1;");
+                    writer.Write("versioncb(12);");
+                    writer.Flush();
                 }
                 else
                 {

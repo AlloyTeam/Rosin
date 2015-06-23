@@ -38,7 +38,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Channel.cs" />
+    <Compile Include="Channel\LiveReloadChannel.cs" />
+    <Compile Include="Channel\IChannel.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="HttpHandler\ChannelHandler.cs" />
     <Compile Include="HttpHandler\IHttpHandler.cs" />
@@ -58,8 +59,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\Rosin\Web\core.js" />
     <Content Include="Scripts\Rosin\Web\index.html" />
+    <Content Include="Scripts\Rosin\Web\live-reload.js" />
+    <Content Include="Scripts\Rosin\Web\rosin_zepto.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

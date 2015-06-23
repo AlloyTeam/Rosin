@@ -11,7 +11,11 @@ namespace AlloyTeam.Rosin.WebServer
     {
         public static void Main(string[] args)
         {
-            Server s = new Server("http://localhost:9527/");
+            List<string> hosts = new List<string>();
+            hosts.Add("http://rosin_debug.com/");
+
+            Server s = new Server(hosts);
+
             s.Start();
             Console.Read();
             //TestReadFile();
