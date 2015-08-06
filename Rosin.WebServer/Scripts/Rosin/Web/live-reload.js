@@ -8,11 +8,15 @@
         };
 
 
-    $(function() {
+    $(function () {
+        console.info(api.getVersion);
+
+        /*
         $.ajax(api.getVersion, {
             dataType: 'jsonp',
             jsonp: 'cb'
         });
+        */
     });
 
     function versioncb(data) {

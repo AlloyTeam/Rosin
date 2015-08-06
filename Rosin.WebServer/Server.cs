@@ -89,6 +89,8 @@ namespace AlloyTeam.Rosin.WebServer
             string vPath = ctx.Request.Url.AbsolutePath;
             string socketId = ctx.Request.RemoteEndPoint.Address.ToString() + ":" + ctx.Request.RemoteEndPoint.Port.ToString();
 
+            Logger.Debug("Request URL:" + ctx.Request.Url);
+
             //上下文池
             if (!ContextPool.ContainsKey(socketId))
             {
