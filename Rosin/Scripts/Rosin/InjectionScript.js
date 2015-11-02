@@ -75,9 +75,9 @@
 
             for (var i = 1; i < arguments.length; i++) {
                 if (Array.isArray(arguments[i])) {
-                    content += (i === 1 ? "" : FConsole.DELIMITER) + FConsole.JSON_TAG_LEFT + "[" + arguments[i] + "]" + FConsole.JSON_TAG_RIGHT;
+                    content += (i === 1 ? "" : FConsole.DELIMITER) + FConsole.JSON_TAG_LEFT + _SafeStringify(arguments[i]) + FConsole.JSON_TAG_RIGHT;
                 } else if (typeof arguments[i] === "object") {
-                    content += (i === 1 ? "" : FConsole.DELIMITER) + FConsole.JSON_TAG_LEFT + JSON.stringify(arguments[i]) + FConsole.JSON_TAG_RIGHT;
+                    content += (i === 1 ? "" : FConsole.DELIMITER) + FConsole.JSON_TAG_LEFT + _SafeStringify(arguments[i]) + FConsole.JSON_TAG_RIGHT;
                 } else {
                     content += (i === 1 ? "" : FConsole.DELIMITER) + arguments[i];
                 }
@@ -129,6 +129,14 @@
         }
     };
 
+    function _SafeStringify(obj) {
+        try {
+            return JSON.stringify(obj);
+        } catch(e) {
+            return JSON.stringify({value: obj && (Object.prototype.toString.call(obj) + obj.toString())});
+        }
+    }
+
 
     function _extendObj(obj) {
         if (typeof obj !== 'object') return obj;
@@ -140,11 +148,13 @@
                     // 不覆盖原方法执行，只是加个壳
                     (function(obj, prop) {
                         if (typeof obj[prop] === "function") {
-                            var oldFun = obj[prop].bind(obj);
+                            var oldFun = obj[prop];
                             obj[prop] = function() {
-                                source[prop].apply(source, arguments);
-                                // oldFun.apply(obj, arguments);
-                                oldFun(arguments[0]);
+                                try {
+                                    source[prop].apply(source, arguments);
+                                    oldFun.apply(obj, arguments);
+                                    //oldFun(arguments[0]);
+                                } catch (e) { }
                             };
                         } else {
                             obj[prop] = source[prop];
