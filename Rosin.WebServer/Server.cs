@@ -106,6 +106,7 @@ namespace AlloyTeam.Rosin.WebServer
             if (vPath.StartsWith(ResourcePath.Key))
             {
                 //使用静态服务器处理
+                Logger.Debug("静态服务器处理");
                 serverContext.VirtualDirectory = ResourcePath.Value;
                 serverContext.RequestAction = vPath.Replace(ResourcePath.Key, "/");
                 handler = new StaticFileHandler();

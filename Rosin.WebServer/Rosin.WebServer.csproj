@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AlloyTeam.Rosin.WebServer</RootNamespace>
     <AssemblyName>Rosin.WebServer</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,11 +30,15 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>AlloyTeam.Rosin.WebServer.TestServer</StartupObject>
+    <StartupObject>AlloyTeam.Rosin.WebServer.WSServer</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Fleck">
+      <HintPath>..\Reference\Fleck.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -51,6 +57,7 @@
     <Compile Include="Server.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="TestServer.cs" />
+    <Compile Include="WebSocketServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Rosin.Base\Rosin.Base.csproj">
@@ -62,6 +69,9 @@
     <Content Include="Scripts\Rosin\Web\index.html" />
     <Content Include="Scripts\Rosin\Web\live-reload.js" />
     <Content Include="Scripts\Rosin\Web\rosin_zepto.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
