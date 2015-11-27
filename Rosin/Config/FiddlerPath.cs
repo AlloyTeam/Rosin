@@ -6,24 +6,39 @@ using System.Windows.Forms;
 
 namespace Rosin.Config
 {
-    static class FiddlerPath
+    internal static class FiddlerPath
     {
-        static public string FiddlerInstallPath = "";
-        static public string FiddlerInstallDir = "";
+        public static string FiddlerInstallPath { get; set; }
 
-        static public string RosinDir = "";
-        static public string RosinLogDir = "";
+        public static string FiddlerInstallDir { get; set; }
 
-        static public string RuleFilePath = "";
-        static public string ScriptFilePath = "";
-        static public string RecordFilePath = "";
+        public static string RosinDir { get; set; }
 
-        static public void InitPath()
+        public static string RosinLogDir { get; set; }
+
+        public static string RuleFilePath { get; set; }
+
+        public static string ScriptFilePath { get; set; }
+
+        public static string RecordFilePath { get; set; }
+
+        static FiddlerPath()
+        {
+            FiddlerInstallPath = "";
+            FiddlerInstallDir = "";
+            RosinDir = "";
+            RosinLogDir = "";
+            RuleFilePath = "";
+            ScriptFilePath = "";
+            RecordFilePath = "";
+        }
+
+        public static void InitPath()
         {
             FiddlerInstallPath = Application.ExecutablePath;
             FiddlerInstallDir = Path.GetDirectoryName(FiddlerInstallPath);
 
-            RosinDir = FiddlerInstallDir + @"\Scripts\Rosin";
+            RosinDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Rosin");
             RosinLogDir = RosinDir + @"\Log";
 
             RuleFilePath = RosinDir + @"\InjectionRule.xml";
